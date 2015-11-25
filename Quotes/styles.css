@@ -1,0 +1,68 @@
+h1 {
+    font-family: cursive;
+    text-align: center;
+    font-size: 24pt;
+}
+a {
+    float:right;
+    clear:both;
+    text-align: center;
+    padding-right: 30px;
+}
+.frame{
+    clear:both;
+    width:80%;
+    min-width: 800px;
+    margin:auto;
+}
+.box{
+    clear:both;
+    min-height: 75px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+.quote{
+    font-family: cursive;
+    padding-left: 10px;
+    float: left;
+    width: 80%;
+    margin-bottom: -10px;
+}
+.author{
+    margin-top: -30px;
+    float:right;
+}
+.ratingbox{
+        float: right;
+    width: 15%;
+}
+.rating{
+    font-size: 20pt;
+    float:left;
+    margin-bottom: 0px;
+    margin-top: 16px;
+}
+.flag{
+    float:right;
+    padding-top: 25px;
+    padding-right: 30px;
+}
+.plus{
+    padding-top: 15px;
+    margin-bottom: 0px;
+        float:right;
+
+}
+.minus{
+        height: 10px;
+        padding-right: 1px;
+        float:right;
+
+}
+.add{
+    margin: 0 auto;
+    width: 400px;
+    min-width: 400px;
+}
