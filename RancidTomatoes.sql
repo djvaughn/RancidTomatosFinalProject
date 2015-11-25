@@ -24,7 +24,7 @@ create table movies(
 	genre		varchar(2000) not null,
 	boxOffice	int not null,
 	links		varchar(100) not null
-)
+);
 
 drop table if exists reviews;
 create table reviews(
@@ -33,4 +33,4 @@ create table reviews(
 	userid		vasrchar(100) not null,
 	comment		varchar(2000) not null,
 	rating		char(1) not null
-)
+);
