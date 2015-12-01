@@ -1,0 +1,17 @@
+Final Tomatoes: ToDo’s and Issues
+
+Meg first priority:
+Views for Add Review Page, Add New Movie, Login and Register
+start on controller if time—all js stuffs here (database in model, view html stuff)
+look over html_special chars in w3C
+getting images
+
+
+
+
+see about writing junit test to check
+check if overview parsing is going to have troubles with commas`
+
+preset database info functions, possibly for our catch block in model constructor
+
+getPicture and getName
