@@ -24,8 +24,14 @@ AddMoviePage.php
 	put in addMovie.php as action for form, doesn’t exist yet, could change
 	probably want to put in character limits somehow, at least mention
 	do we want to use type=date for year, not supported on IE
-	radio buttons for rating instead of text field?
 	ask for commas in cast, director(s), producers, directors, links
 	no required vs. unrequired fields yet
 	runtime in minutes currently
 	box office in millions or not? currently not
+	css config/layout needs to be fixed. 
+	do we want nc-17 as an mpaa rating option?
+	Sign in link on the side “overview” container. save as to loginPage.php?
+	Where exactly do we want to add our links. could be on the side overview
+		panel, but won’t be consistent with movie review page layout
+	Clear button added, need a method for that
+

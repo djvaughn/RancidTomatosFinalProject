@@ -119,3 +119,33 @@ footer p {
 	list-style: none;
 	margin-left: -39px;
 }
+.addMovieInstr{
+	font-size: 18pt;
+	height: inherit;
+	position: relative;
+	vertical-align: top;
+	padding: 0px 0.5em;
+	color: red;
+}
+.addMovieFresh{
+	float: right;
+}
+.loginBoxBig{
+	padding-top: 20px;
+	padding-left: 110px;
+	padding-right: 110px;
+}
+.loginHeader{
+	/*may want to change font style*/
+	color: green;
+	font-family: serif;
+	font-size: 12pt;
+	padding-left: 5px;
+}
+.loginBox{
+	background-color: white;
+	border-radius: 20px;
+	min-height: 2em;
+	padding: 3.5%;
+}
+
