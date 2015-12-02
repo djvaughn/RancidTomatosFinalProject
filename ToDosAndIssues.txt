@@ -15,3 +15,17 @@ check if overview parsing is going to have troubles with commas`
 preset database info functions, possibly for our catch block in model constructor
 
 getPicture and getName
+
+
+
+MEG’S NOTES
+AddMoviePage.php
+	haven’t set require_once at top
+	put in addMovie.php as action for form, doesn’t exist yet, could change
+	probably want to put in character limits somehow, at least mention
+	do we want to use type=date for year, not supported on IE
+	radio buttons for rating instead of text field?
+	ask for commas in cast, director(s), producers, directors, links
+	no required vs. unrequired fields yet
+	runtime in minutes currently
+	box office in millions or not? currently not
