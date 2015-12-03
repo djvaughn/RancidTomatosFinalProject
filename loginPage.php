@@ -4,6 +4,8 @@
 <?php
 /*require_once ('SOMETHING.PHP');*/
 	/*set up variables we may need here*/
+	$problem = $_GET["problem"];
+	//use this for the redirect and print error login messages
 ?>
 
 <head>
@@ -22,7 +24,7 @@
     	<div class="main row">
 	    	<section class="reviews-container">
 	    		<aside class="ratings-container">
-	                    <img src="MoviesToUse/images/rottenlarge.png" alt="Rotten" /> 
+	                    <img src="MoviesToUse/images/rottenlarge.png" alt="Rotten" />
 	                    <span class="addMovieInstr">Login and Membership</span>
 	                    <img class="addMovieFresh" src="MoviesToUse/images/freshlarge.png" alt="Fresh" />
 	            </aside>

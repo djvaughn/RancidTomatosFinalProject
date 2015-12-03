@@ -4,10 +4,19 @@
 <?php
 /*require_once ('SOMETHING.PHP');*/
 	/*set up variables we may need here*/
+    $problem = $_GET["problem"];
+    $message = "ERROR:  ";
 ?>
 
 <head>
 	<title>RT: Add a Movie</title>
+            <?php
+            session_start();
+            if (!$_SESSION['login']) {
+                header("location: loginPage.php?problem=notLogin");
+                exit;
+            }
+            ?>
 	<meta charset="utf-8" />
 	<link href="movie.css" type="text.css" rel="stylesheet" />
 </head>
@@ -25,7 +34,7 @@
     	<div class="main row">
             <section class="reviews-container">
                 <aside class="ratings-container">
-                    <img src="MoviesToUse/images/rottenlarge.png" alt="Rotten" /> 
+                    <img src="MoviesToUse/images/rottenlarge.png" alt="Rotten" />
                     <span class="addMovieInstr">Enter Movie Info Below:</span>
                     <img class="addMovieFresh" src="MoviesToUse/images/freshlarge.png" alt="Fresh" />
                 </aside>
