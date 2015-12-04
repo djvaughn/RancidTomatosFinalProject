@@ -5,6 +5,7 @@
 /*require_once ('SOMETHING.PHP');*/
 	/*set up variables we may need here*/
 	$problem = $_GET["problem"];
+
 	//use this for the redirect and print error login messages
 ?>
 

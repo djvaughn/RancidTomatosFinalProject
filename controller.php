@@ -26,11 +26,11 @@ session_start();
                 if($model->verified($username, $password)){
                     $_SESSION['login'] = "TRUE";
                     $_SESSION['name'] = $userid;
-                    header("Location: index.html");
+                    header("Location: index.php?mode=main");
                     exit;
                 }else{
                     $problem = "TRUE";
-                    header("'Location: login.php?problem=$problem");
+                    header("'Location: loginRegistrationPage.php?problem=$problem");
                     exit;
                 }
 
