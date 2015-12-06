@@ -13,6 +13,7 @@ session_start();
                 $comment =  $_POST["COMMENT"];
                 $rating = $_POST["RATING"];
                 $model->addNewReview($title, $userid, $comment, $rating);
+                
             }else if($button == "register"){
                 $password = $_POST["PASSWORD"];
                 $userid = $_POST["USERID"];

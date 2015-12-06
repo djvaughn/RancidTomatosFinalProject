@@ -33,11 +33,11 @@
 	            	<h2 class="loginHeader">I am already a member!</h2>
 	            	<div class="loginBox">
 		            	My login info:
-		            	<form action="memberLogin.php" method="post"><br />
-		            		<input type="hidden" name="loginType" value="memberLogin" />
-		            		User name: <br /> <input type="text" name="memberUserName" /><br />
-		            		Password: <br /> <input type="password" name="memberPassword" /><br />
-		            		<input type="submit" value="submit" />
+		            	<form action="controller.php" method="post"><br />
+		            		User name: <br /> <input type="text" name="USERID" /><br />
+		            		Password: <br /> <input type="password" name="PASSWORD" /><br />
+		            		<input type="submit" value="LOGIN" name="Button" />
+		            		<input type="hidden" value="" name="ID" />
 		            	</form>
 		            </div>
 	            </div>
@@ -46,13 +46,14 @@
 		            <h2 class="loginHeader">I want to become a member!</h2>
 		            <div class="loginBox">
 		            	Enter your info:
-		            	<form action="newLogin.php" method="post"><br />
+		            	<form action="controller.php" method="post"><br />
 		            		<input type="hidden" name="loginType" value="newMember"/>
-		            		Your name: <br /> <input type="text" name="newMemberName" />
-		            		Choose a user name: <br /> <input type="text" name="newMemberUserName" /><br />
-		            		Password: <br /> <input type="password" name="newMemberPassword1" /><br />
-		            		Retype Password: <br /> <input type="password" name="newMemberPassword2" /><br />
-		            		<input type="submit" value="submit" />
+		            		Your name: <br /> <input type="text" name="NAME" />
+		            		Your publication: <br /> <input type="text" name="PUBLICATION" />
+		            		Choose a user name: <br /> <input type="text" name="USERID" /><br />
+		            		Choose a password: <br /> <input type="password" name="PASSWORD" /><br />
+		            		<input type="submit" value="register" name="Button" />
+		            		<input type="hidden" value="" name="ID" />
 		            	</form>
 		            </div>
 	            </div>
@@ -60,6 +61,7 @@
 	    	<section class="overview">
 	    		Home <br />
 	    		Add Movie
+	    		Login/Logout
 	    	</section>
 	    </div>
     </div>
