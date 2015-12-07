@@ -122,17 +122,20 @@ footer p {
 .addMovieInstr{
 	font-size: 18pt;
 	height: inherit;
-	position: relative;
-	vertical-align: top;
-	padding: 0px 0.5em;
+	vertical-align: bottom;
 	color: red;
 }
 .addMovieFresh{
 	float: right;
 }
+.addForm{
+	margin-left: 95px;
+	padding-left: 5px; 
+	/*border-left: black solid 2px;*/
+}
 .loginBoxBig{
 	padding-top: 20px;
-	padding-left: 110px;
+	padding-left: 105px;
 	padding-right: 110px;
 }
 .loginHeader{

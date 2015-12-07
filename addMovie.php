@@ -4,26 +4,33 @@
 <?php
 /*require_once ('SOMETHING.PHP');*/
 	/*set up variables we may need here*/
+    /*
     $problem = $_GET["problem"];
     $message = "ERROR:  ";
+    */
 ?>
 
 <head>
 	<title>RT: Add a Movie</title>
-            <?php
+           <?php
+            $loggedIn="no";
+
             session_start();
             if (!$_SESSION['login']) {
                 header("location: loginPage.php?problem=notLogin");
                 exit;
+            }else{
+                $loggedIn="yes";
             }
-            ?>
+            */
+            ?> 
 	<meta charset="utf-8" />
 	<link href="movie.css" type="text.css" rel="stylesheet" />
 </head>
 
 <body>
 	<header>
-        <img src="MoviesToUse/images/rancidbanner.png" alt="Rancid Tomatoes">
+        <img src="images/rancidbanner.png" alt="Rancid Tomatoes">
         <!-- may want to make this a link to the home page -->
         <!--    this needs to extend across the window -->
     </header>
@@ -34,11 +41,11 @@
     	<div class="main row">
             <section class="reviews-container">
                 <aside class="ratings-container">
-                    <img src="MoviesToUse/images/rottenlarge.png" alt="Rotten" />
+                    <img src="images/rottenlarge.png" alt="Rotten" />
                     <span class="addMovieInstr">Enter Movie Info Below:</span>
-                    <img class="addMovieFresh" src="MoviesToUse/images/freshlarge.png" alt="Fresh" />
+                    <img class="addMovieFresh" src="images/freshlarge.png" alt="Fresh" />
                 </aside>
-        		<form action="addMovie.php" method="post"><br />
+        		<form action="controller.php" method="post" class="addForm"><br />
                     <!-- want to check title against database as typed? -->
         			Title: <br /> <input type="text" name="title" /><br />
         			Year: <br /> <input type="date" name="year" /><br />
@@ -58,23 +65,41 @@
         			Production Company: <br /> <input type="text" name="productionCompany" /><br />
         			Run Time (in minutes): <br /> <input type="number" name="runTime" /><br />
         			Genre: <br /> <input type="text" name="genre" /><br />
-        			Box Office: <br /> <input type="number" name="title" /><br />
+        			Box Office: <br /> <input type="number" name="boxOffice" /><br />
                     <!--want to actually make these working links? if yes, check security? -->
-        			links: <br /> <input type="text" name="links" /><br />
+        			Links: <br /> <input type="text" name="links" /><br />
                     <br />
                     <button type="button" value="clear" onclick="SOMETHING">Clear</button>
                     <br /><br />
-                    <input type="submit" value="submit" />
+                    <input type="hidden" value="" name="ID" />
+                    <input type="hidden" value="addMovie" name="Button" />
+                    <input type="submit" value="Submit" />
         		</form>
             </section>
             <section class="overview">
-                <a rel="url" href="randcidHome.php">Home</a>
+                <form action="index.html" method="get" >
+                    <input type="hidden" name="mode" value="main" />
+                    <input type="submit" value="Main" />
+                </form>
                 <br />
-                <!-- put this as an if not signed in, make visible? -->
-                <a rel="url"  href="loginPage.php">Sign In</a><!-- do this as a link or not? -->
+                <form action="index.html" method="get">
+                <?=
+                    if($loggedIn == yes){ ?>
+                        <input type="hidden" name="mode" value="logout" />
+                        <input type="submit" value="Logout" />
+                    
+                <?= }else{ ?>
+                        <input type="hidden" name"mode" value="login" />
+                        <input type="submit" value="Login" />
+                <?= } ?>
+                <br />
+                <form action="index.html" method="get">
+                    <input type="hidden" name="mode" value="addReview" />
+                    <input type="submit" value="Add a New Movie" />
+                </form>
             </section>
             <footer class="row">
-                <!-- it'd be cool to have a "top" link here -->
+                <p></p>
             </footer>
     	</div>
     </div>

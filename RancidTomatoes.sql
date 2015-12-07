@@ -13,6 +13,7 @@ create table movies(
 	title		varchar(100) not null,
 	year		int not null,
 	rating		int not null,
+	imagePath	varchar(100) not null,
 	cast		varchar(2000) not null,
 	director	varchar(100) not null,
 	producer	varchar(2000) not null,
@@ -30,7 +31,7 @@ drop table if exists reviews;
 create table reviews(
 	id			bigint not null auto_increment primary key,
 	title		varchar(100) not null,
-	userid		vasrchar(100) not null,
+	userid		varchar(100) not null,
 	comment		varchar(2000) not null,
 	rating		char(1) not null
 );

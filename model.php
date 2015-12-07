@@ -50,16 +50,15 @@
         }
 
         public function getMoviesAsArray($title) {
-            // possible values of flagged are 't', 'f';
             $stmt = $this->DB->prepare ( "SELECT * FROM movies WHERE title = :title ORDER BY id DESC, added" );
             $stmt->bindParam ( 'title', $title );
             $stmt->execute ();
             return $stmt->fetchAll ( PDO::FETCH_ASSOC );
         }
 
-        public function addNewMovie($title, $year, $cast, $director, $producer, $mpaRating, $releaseDate, $synopsis, $productionCompany, $runTime, $genre, $releaseDate, $links){
-            $stmt = $this->DB->prepare ( "INSERT INTO movies (title, year, rating, cast, director, producer , mpaRating, releaseDate, synopsis, productionCompany, runTime, genre boxOffice, links)
-                values(:title, :year, 0, :cast, :director, :producer , :mpaRating, :releaseDate, :synopsis, :productionCompany, :runTime, :genre, :boxOffice, :links)" );
+        public function addNewMovie($title, $year, $cast, $director, $producer, $mpaRating, $releaseDate, $synopsis, $productionCompany, $runTime, $genre, $releaseDate, $boxOffice, $links, $imagePath){
+            $stmt = $this->DB->prepare ( "INSERT INTO movies (title, year, rating, imagePath, cast, director, producer , mpaRating, releaseDate, synopsis, productionCompany, runTime, genre, boxOffice, links)
+                values(:title, :year, 0, :imagePath, :cast, :director, :producer , :mpaRating, :releaseDate, :synopsis, :productionCompany, :runTime, :genre, :boxOffice, :links)" );
             $stmt->bindParam ( 'title', $title );
             $stmt->bindParam ( 'year', $year );
             $stmt->bindParam ( 'cast', $cast );
@@ -71,8 +70,10 @@
             $stmt->bindParam ( 'productionCompany', $productionCompany );
             $stmt->bindParam ( 'runTime', $runTime );
             $stmt->bindParam ( 'genre', $genre );
-            $stmt->bindParam ( 'boxOffice', $releaseDate );
+            $stmt->bindParam ( 'boxOffice', $boxOffice );
+            $stmt->bindParam ( 'releaseDate', $releaseDate );
             $stmt->bindParam ( 'links', $links );
+            $stmt->bindParam ( 'imagePath', $imagePath);
             $stmt->execute ();
         }
 

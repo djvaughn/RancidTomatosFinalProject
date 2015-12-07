@@ -4,10 +4,29 @@ session_start();
             $button = $_POST["Button"];
             $id =  $_POST["ID"];
             $model = $_POST["MODEL"];
-            if ($button == "movie") {
-
+            if ($button == "addMovie") {
+                $title = $_POST["title"];
+                $year = $_POST["year"];
+                $rating = $_POST["RATING"];
+                $director = $_POST["director"];
+                $producer = $_POST["producer"];
+                $mpaaRating = $_POST["mpaaRating"];
+                $releaseDate = $_POST["releaseDate"];
+                $synopsis = $_POST["synopsis"];
+                $productionCompany = $_POST["productionCompany"];
+                $runTime = $_POST["runTime"];
+                $genre = $_POST["genre"];
+                $boxOffice = $_POST["boxOffice"];
+                $links = $_POST["links"];
+                $imagePath="";
+                addNewMovie($title, $year, $cast, $director, $producer, $mpaaRating, $releaseDate, $synopsis, 
+                    $productionCompany, $runTime, $genre, $releaseDate, $boxOffice, $links, $imagePath);
+                header("Location: reviewPage.php?movie=$title");
             }
-            else if ($button == "review") {
+            else if ($button == "movieReview"){
+                $movieID = $_POST["movieID"];
+            }
+            else if ($button == "newReview") {
                 $title = $_POST["TITLE"];
                 $userid = $_POST["USERID"];
                 $comment =  $_POST["COMMENT"];

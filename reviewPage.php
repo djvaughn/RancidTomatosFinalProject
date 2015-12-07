@@ -9,12 +9,11 @@
     and then is passed down the rating of the movie to set the correct rotten/fresh images
     */
     $film = $_GET["film"];
-    $info = file("{$film}/info.txt", FILE_IGNORE_NEW_LINES);
-    $overview = file("{$film}/overview.txt", FILE_IGNORE_NEW_LINES);
-    $reviews=glob("{$film}/review*.txt");
+    $movie = getMoviesAsArray($film);
+    $reviews=getReviewAsArray($film);
     $N = count($reviews);
     $images = new WebImages();
-    $images->setImages($info[2]);
+    $images->setImages($movie['rating']);
 ?>
 
 <head>
@@ -34,7 +33,7 @@
     <div class="container">
         <div class="row main-header">
             <!-- The php code prints the movie title and year it was made -->
-            <h1><?=$info[0]?> (<?=$info[1]?>)</h1>
+            <h1><?=$movie['title']?> (<?=$movie['year']?>)</h1>
         </div>
         <div class="main row">
             <section class="reviews-container">
@@ -53,6 +52,7 @@
                 end of the row
 
                 */
+
                 for($i=0; $i<$N; $i++){
 
                     if($i%2==0){ ?>
@@ -63,7 +63,7 @@
 
                         <?php
 
-                        $review = file($reviews[$i], FILE_IGNORE_NEW_LINES);
+                        $review = $reviews[$i];
 
                         ?>
 
@@ -81,13 +81,11 @@
 
                             $reviewImage="rotten.gif";
                         }
+
                         ?>
-
                             <img src="images/<?=$reviewImage?>" alt="Rotten" />
-
                             <q>
-
-                                <?= $review[0] ?>
+                                <?= $review['comment'] ?>
                             </q>
 
                         </div>
@@ -97,8 +95,8 @@
                                 <img src="images/critic.gif" alt="Critic" />
                             </div>
 
-                            <p><?= $review[2]?>
-                                <br /> <?= $review[3]?> </p>
+                            <p><?= $review['name']?>
+                                <br /> <?= $review['publication']?> </p>
 
                         </div>
                     </div>
@@ -115,30 +113,33 @@
             </section>
             <section class="overview">
                  <!-- The php helps get the films poster from the file-->
+
+
+
+
+
+
+<!-- fIGURE THIS OUT! -->
+
                 <img src="<?=  $film ?>/overview.png" alt="general overview" />
                 <br>
                 <dl>
                     <?php
-                    /* This php code goes through each line of the overview file and sets it to $d
-                         Then it explodes on : in $d and sets the array to d1.  Then it prints the Heading
-                          of each section(staring, producers) and then prints out each of subsections like actors names, genre,etc
-                    */
-                    foreach ($overview as $d) {
-                       $d1 = explode(":",$d);
-                       ?>
 
-                       <dt>
-
-                        <?=$d1[0]?>
-
-                       </dt>
-
-                       <?php for ($i=1; $i < count($d1); $i++) { ?>
-
-                           <dd>
-
-                            <?=$d1[$i] ?>
-
+                    $overviewTitles=array("STARRING:","DIRECTOR:","PRODUCER:","RATING:","THEATRICAL RELEASE:",
+                    "MOVIE SYNOPSIS:", "RELEASE COMPANY:", "RUNTIME:", "GENRE:", "BOX OFFICE:", "LINKS:");
+                    $counter = 0; //accounting for first 4 table columns
+                    foreach ($movie as $col) { 
+                        if($counter<5){
+                            $counter++;
+                        }else{
+                    ?>
+                           <dt>
+                                <?=$overviewTitles[counter-5];
+                                counter++;?>
+                           </dt>
+                            <dd>
+                                <?=$col ?>
                            </dd>
                            <?php
                        }
