@@ -31,7 +31,7 @@
 
       }else if(isset($_GET['film'])) {
         $film = $film = $_GET["film"];
-        header("'Location: reviewPage.php?problem=$problem");
+        header("'Location: reviewPage.php?film=$film");
         exit;
       }else{
          require_once("./mainPage.php");
