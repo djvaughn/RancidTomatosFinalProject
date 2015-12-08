@@ -78,6 +78,7 @@ footer p {
 }
 .main.row {
     background-color: lightgray;
+    height: 100%;
 }
 .review-wrapper {
 	width: 48%;
@@ -108,6 +109,7 @@ footer p {
 
 .overview {
 	width: 250px;
+	height: 100%;
 	font-size: 9pt;
 	float: left;
 	background-color: #A2B964;
@@ -123,10 +125,40 @@ footer p {
 	font-size: 18pt;
 	height: inherit;
 	position: relative;
-	vertical-align: top;
+	vertical-align: bottom;
 	padding: 0px 0.5em;
 	color: red;
 }
+.main.entryRow{
+	background-color: #A2B964;
+    height: 100%;
+    border-radius: 20px;
+}
+.entryContainer{
+	width: 65%;
+	float: left;
+	min-width: 550px;
+	background-color: lightgray;
+	font-size: 10pt;
+	padding-bottom: 22px;
+}
+.entryOverview{
+	width: 250px;
+	height: 100%;
+	font-size: 9pt;
+	float: left;
+	background-color: #A2B964;
+	margin-top: 100px;
+}
+.entry-wrapper{
+	width: 48%;
+	float: left;
+	padding-left: 110px;
+	padding-right: 175px;
+	padding-bottom: 20px;
+	background-color: lightgray;
+}
+
 .addMovieFresh{
 	float: right;
 }

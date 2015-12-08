@@ -91,7 +91,7 @@
                     <input type="text" value="" id="searchBox" onchange="autocomplete()" />
                     <br />
                     <div id="autoResultsBox" class="autoResultsBox" >
-                        <textarea>
+                        <!--<textarea>
                             <ul>
                                 <?= $myStmt = ""; ?>
                                 <?= foreach($search as $match) { ?> 
@@ -103,7 +103,7 @@
                                         </li>
                                 <?= } ?>
                             </ul>
-                        </textarea>
+                        </textarea> -->
                     </div>
                     <input type="submit" value="Search Movie" />
                 </div>

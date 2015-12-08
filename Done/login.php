@@ -30,13 +30,11 @@ if (isset($_SESSION['registerProblem'])) {
 
 <body>
 	<header>
-        <img src="images/rancidbanner.png" alt="Rancid Tomatoes" />
-        <!-- may want to make this a link to the home page -->
-        <!--    this needs to extend across the window, not sure why it's not -->
+        <a rel="url" href="mainPage.php"><img src="images/rancidbanner.png" alt="Rancid Tomatoes" /></a>
     </header>
     <div class="container">
-    	<div class="main row">
-	    	<section class="reviews-container">
+    	<div class="main entryRow">
+	    	<section class="entryContainer">
 	    		<aside class="ratings-container">
 	                    <img src="images/rottenlarge.png" alt="Rotten" />
 	                    <span class="addMovieInstr">Login and Membership</span>
@@ -89,10 +87,42 @@ if (isset($_SESSION['registerProblem'])) {
 		            </div>
 	            </div>
 	    	</section>
-	    	<section class="overview">
-	    		Home <br />
-	    		Add Movie
-	    		Login/Logout
+	    	<section class="entryOverview">
+	    		<a rel="url" href="index.php">Home</a>
+                <br />
+	    		<?php if(!isset($_SESSION['user'])){ ?>
+	    			<a rel="url" href="login.php" >Login</a>
+	    			<br />
+	    		<?php }else { ?>
+	    			<a rel="url" href="addMovie.php" >Add a Movie</a>
+	    			<br />
+	    			<a rel="url" href="addReview.php" >Review a Movie</a>
+	    			<br />
+	    			<a rel="url" href="">Logout</a>
+	    		<?php } ?>
+
+	    		<br /><br />
+	    		<div class="searchBoxDiv">
+                    <input type="hidden" name="mode" value="search" />
+                    <input type="text" value="" id="searchBox" onchange="autocomplete()" />
+                    <input type="submit" value="Search Movie" />
+                    <br />
+                    <div id="autoResultsBox" class="autoResultsBox" >
+                        <!--<textarea rows="4" cols="20">
+                            <ul>
+                                <?= $myStmt = ""; ?>
+                                <?php foreach($search as $match) { ?> 
+                                    <?= $myStmt = $match['title'] . ', ' . $match['year'] ?>
+                                        <li> 
+                                            <div id="filler" onclick="fill()">
+                                                <?= $myStmt ?>
+                                            </div> 
+                                        </li>
+                                <?php } ?>
+                            </ul>
+                        </textarea> -->
+                    </div>
+                </div>
 	    	</section>
 	    </div>
     </div>
