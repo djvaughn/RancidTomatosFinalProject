@@ -49,7 +49,6 @@ class Model
         $stmt = $this->DB->prepare(" SELECT * FROM users WHERE userId = :userId");
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
-        $user = $stmt->fetch();
         $rowCount = $stmt->rowCount();
         if ($rowCount == 0) {
             return TRUE;
@@ -63,7 +62,6 @@ class Model
         $stmt = $this->DB->prepare(" SELECT * FROM movies WHERE title = :title");
         $stmt->bindParam(':title', $title);
         $stmt->execute();
-        $user = $stmt->fetch();
         $rowCount = $stmt->rowCount();
         if ($rowCount == 0) {
             return TRUE;
@@ -108,17 +106,19 @@ class Model
         return $movieInfo;
     }
 
-    public function addNewMovie($title, $year, $rating, $director, $mpaaRating, $runTime, $boxOffice, $posterImage) {
-        $stmt = $this->DB->prepare("INSERT INTO movies (title, year, rating, director, mpaaRating , runTime, boxOffice, posterImage)
-                VALUES(:title, :year, :rating, :director, :mpaaRating, :runTime, :boxOffice, :posterImage);");
+    public function addNewMovie($title, $year, $rating, $director, $mpaaRating, $runTime, $boxOffice, $posterImage, $numRating, $numFreshRating) {
+        $stmt = $this->DB->prepare("INSERT INTO movies (title, year, rating, director, mpaaRating , runTime, boxOffice, posterImage, numRating, numFreshRating)
+                VALUES(:title, :year, :rating, :director, :mpaaRating, :runTime, :boxOffice, :posterImage, :numRating, :numFreshRating);");
         $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':year', $year);
-        $stmt->bindParam(':rating', $rating);
+        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+        $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
         $stmt->bindParam(':director', $director);
         $stmt->bindParam(':mpaaRating', $mpaaRating);
-        $stmt->bindParam(':runTime', $runTime);
-        $stmt->bindParam(':boxOffice', $boxOffice);
+        $stmt->bindParam(':runTime', $runTime, PDO::PARAM_INT);
+        $stmt->bindParam(':boxOffice', $boxOffice, PDO::PARAM_INT);
         $stmt->bindParam(':posterImage', $posterImage);
+        $stmt->bindParam(':numRating', $numRating, PDO::PARAM_INT);
+        $stmt->bindParam(':numFreshRating', $numFreshRating, PDO::PARAM_INT);
         $stmt->execute();
     }
 
@@ -140,6 +140,35 @@ class Model
         $stmt->bindParam(':lastName', $lastName);
         $stmt->bindParam(':publication', $publication);
         $stmt->execute();
+    }
+
+    public function updateMovieReview($title, $rating) {
+
+        $sql = "UPDATE movies SET numRating=numRating + 1 WHERE title= :title";
+        $stmt = $this->DB->prepare($sql);
+        $stmt->bindParam(':title', $title);
+        $stmt->execute();
+        if ($rating == "F") {
+            $sql = "UPDATE movies SET numFreshRating=numFreshRating + 1 WHERE title= :title";
+            $stmv = $this->DB->prepare($sql);
+            $stmv->bindParam(':title', $title);
+            $stmv->execute();
+        }
+        $sql = "SELECT numRating , numFreshRating FROM movies where title = :title";
+        $stmu = $this->DB->prepare($sql);
+        $stmu->bindParam(':title', $title);
+        $stmu->execute();
+        $array = $stmu->fetch();
+        $numRating = $array['numRating'];
+        $numFreshRating = $array['numFreshRating'];
+        $newRating = ($numFreshRating / $numRating) * 100;
+        $rounded = round($newRating);
+
+        $sql = "UPDATE movies SET rating = :rating where title = :title ";
+        $stmh = $this->DB->prepare($sql);
+        $stmh->bindParam(':title', $title);
+        $stmh->bindParam(':rating', $rounded);
+        $stmh->execute();
     }
 }
 ?>

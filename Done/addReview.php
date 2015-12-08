@@ -4,11 +4,14 @@
 <head>
     <title>RT: Add a Review</title>
             <?php
+
+/*
             session_start();
             if (!isset($_SESSION['user'])) {
                 header("location: login.php");
                 exit;
             }
+*/
 ?>
     <meta charset="utf-8" />
     <link href="movie.css" type="text.css" rel="stylesheet" />
@@ -33,39 +36,19 @@
                 </aside>
                 <form action="controller.php" method="post" id = "addReview" enctype="multipart/form-data"><br>
                     Title: <br> <input type="text" name="addReviewtitle" required><br><br>
-                    Year: <br> <input type="number" name="year" min = "1900" max = "2016" required><br><br>
-                    Director: <br> <input type="text" name="director"required><br><br>
-                    Run Time (in minutes): <br> <input type="number" name="runTime" min = "1" required><br><br>
-                    Box Office (in millions): <br> <input type="number" name="boxOffice" min = "1" required><br><br>
-                    <fieldset class="field">
+                     <fieldset class="field">
 
-                    <legend>MPAA Rating</legend>
+                    <legend>My Rating</legend>
 
-                    <input type="radio" value="G" name="mpaaRating" required/>G
+                    <input type="radio" value="F" name="rating" required/>Fresh
                     <br>
-                    <input type="radio" value="PG" name="mpaaRating">PG
-                    <br>
-                    <input type="radio" value="PG-13" name="mpaaRating">PG-13
-                    <br>
-                    <input type="radio" value="R" name="mpaaRating">R
+                    <input type="radio" value="R" name="rating">Rotten
                     <br>
                 </fieldset>
                     <br >
-                   Rating: <br> <input type="number" name="rating" min = "1" max = "100" required><br><br>
-
-                   Movie Poster (PNG Files only): <input type ="file" name = "file" id ="file" required><br><br>
-                    <input type="submit" value="Add Movie" >
+                    Review: <br> <textarea rows="10" cols="50" name="reviewReview" required maxlength=500></textarea><br><br>
+                    <input type="submit" value="Add Review" >
                     <input type="button" value="Clear Form" onclick="clearFunction()">
-                    <?php
-                            if ($duplicateMovie == TRUE) {
-                            ?>
-                                <p>The movie already exists</p>
-
-                            <?php
-                            $duplicateMovie = False;
-                            unset($_SESSION['failureToAdd']);
-                            }
-                            ?>
                 </form>
             </section>
             <section class="overview">

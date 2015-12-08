@@ -17,7 +17,10 @@ create table movies(
 	mpaaRating		varchar(5) NOT NULL,
 	runTime		int NOT NULL,
 	boxOffice		int NOT NULL,
-	posterImage		varchar(100) NOT NULL
+	posterImage		varchar(100) NOT NULL,
+	numRating		int NOT NULL,
+	numFreshRating	int NOT NULL
+
 );
 
 create table reviews(
@@ -35,9 +38,9 @@ create table users(
 );
 
 /*Inserting movies  into the movie table*/
-INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage) VALUES('The Princess Bride', 1987, 95, 'Rob Reiner', 'PG', 98, 31, 'moviePoster/princessBride.png');
-INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage) VALUES('Mortal Kombat', 1995, 74, 'Paul Anderson', 'PG-13', 101, 121, 'moviePoster/mortalKombat.png');
-INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage) VALUES('The Martian', 2015, 93, 'Ridley Scott', 'PG-13', 134, 556, 'moviePoster/theMartian.png');
-INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage) VALUES('Teenage Mutant Ninja Turtles II: The Secret of the Ooze', 1991, 36, 'Michael Pressman', 'PG', 88, 79, 'moviePoster/tmnt2.png');
+INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('The Princess Bride', 1987, 0, 'Rob Reiner', 'PG', 98, 31, 'moviePoster/princessBride.png', 0 ,0);
+INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('Mortal Kombat', 1995, 0, 'Paul Anderson', 'PG-13', 101, 121, 'moviePoster/mortalKombat.png', 0, 0);
+INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('The Martian', 2015, 0, 'Ridley Scott', 'PG-13', 134, 556, 'moviePoster/theMartian.png', 0, 0);
+INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('Teenage Mutant Ninja Turtles II: The Secret of the Ooze', 1991, 0, 'Michael Pressman', 'PG', 88, 79, 'moviePoster/tmnt2.png', 0, 0);
 
 

@@ -4,6 +4,7 @@
 <head>
     <title>RT: Add a Movie</title>
             <?php
+            $duplicateMovie = false;
             session_start();
             if (!isset($_SESSION['user'])) {
                 header("location: login.php");
@@ -55,8 +56,6 @@
                     <br>
                 </fieldset>
                     <br >
-                   Rating: <br> <input type="number" name="rating" min = "1" max = "100" required><br><br>
-
                    Movie Poster (PNG Files only): <input type ="file" name = "file" id ="file" required><br><br>
                     <input type="submit" value="Add Movie" >
                     <input type="button" value="Clear Form" onclick="clearFunction()">
