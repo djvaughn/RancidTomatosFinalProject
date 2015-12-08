@@ -99,13 +99,21 @@ class Model
 
     public function getMovieInfo($title) {
 
-        $stmt = $this->DB->prepare("SELECT year, director, mpaaRating, runTime, boxOffice, posterImage FROM movies where title = :title");
-        $stmt->bindParam('title', $title);
+        $stmt = $this->DB->prepare("SELECT year, director, mpaaRating, rating, runTime, boxOffice, posterImage FROM movies where title = :title");
+        $stmt->bindParam(':title', $title);
         $stmt->execute();
         $movieInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $movieInfo;
+        return $movieInfo[0];
     }
-
+    public function getReviewRowCount($title){
+        $stmt = $this->DB->prepare("SELECT reviews.comment, reviews.rating, reviewers.firstName, reviewers.lastName, reviewers.publication
+            FROM reviews INNER JOIN reviewers on reviews.userId = reviewers.userId
+            WHERE reviews.title = :title");
+         $stmt->bindParam(':title', $title);
+          $stmt->execute();
+          $this->rowCount = $stmt->rowCount();
+          return $this->rowCount;
+    }
     public function addNewMovie($title, $year, $rating, $director, $mpaaRating, $runTime, $boxOffice, $posterImage, $numRating, $numFreshRating) {
         $stmt = $this->DB->prepare("INSERT INTO movies (title, year, rating, director, mpaaRating , runTime, boxOffice, posterImage, numRating, numFreshRating)
                 VALUES(:title, :year, :rating, :director, :mpaaRating, :runTime, :boxOffice, :posterImage, :numRating, :numFreshRating);");

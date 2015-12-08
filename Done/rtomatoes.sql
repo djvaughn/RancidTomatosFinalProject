@@ -40,7 +40,7 @@ create table users(
 /*Inserting movies  into the movie table*/
 INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('The Princess Bride', 1987, 0, 'Rob Reiner', 'PG', 98, 31, 'moviePoster/princessBride.png', 0 ,0);
 INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('Mortal Kombat', 1995, 0, 'Paul Anderson', 'PG-13', 101, 121, 'moviePoster/mortalKombat.png', 0, 0);
-INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('The Martian', 2015, 0, 'Ridley Scott', 'PG-13', 134, 556, 'moviePoster/theMartian.png', 0, 0);
+INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('The Martian', 2015, 0, 'Ridley Scott', 'PG-13', 134, 556, 'moviePoster/the Martian.png', 0, 0);
 INSERT INTO movies(title, year, rating, director, mpaaRating, runTime, boxOffice, posterImage, numRating, numFreshRating) VALUES('Teenage Mutant Ninja Turtles II: The Secret of the Ooze', 1991, 0, 'Michael Pressman', 'PG', 88, 79, 'moviePoster/tmnt2.png', 0, 0);
 
 
