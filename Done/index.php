@@ -29,10 +29,9 @@
                 <div class="row">
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="controller.php" method="post" >
-                                <input type="hidden" name="movieReq" value="Mortal Kombat">
-                                    <a rel="url" href="controller.php"><img src="moviePoster/mortalKombat.png"></a>
-                                </input>
+                            <form action="redirect.php" method="post" >
+                                <input type="hidden" name="movieReq" value="MortalKombat" />
+                                <input type="image" name="displayMovie" src="./moviePoster/mortalKombat.png" value="Submit" />
                             </form>
                         </div>
                         <div class="author">
@@ -42,10 +41,9 @@
                 	</div>
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="controller.php" method="post" >
-                                <input type="hidden" name="movieReq" value="Mortal Kombat">
-                                    <a rel="url" href="controller.php"><img src="moviePoster/princessBride.png"></a>
-                                </input>
+                            <form action="redirect.php" method="post" >
+                                <input type="hidden" name="movieReq" value="The Princess Bride" />
+                                <input type="image" name="displayMovie" src="./moviePoster/princessBride.png" value="Submit" />
                             </form>
                         </div>
                         <div class="author">
@@ -57,10 +55,9 @@
                 <div class="row">
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="controller.php" method="post" >
-                                <input type="hidden" name="movieReq" value="Mortal Kombat">
-                                    <a rel="url" href="controller.php"><img src="moviePoster/the Martian.png"></a>
-                                </input>
+                            <form action="redirect.php" method="post" >
+                                <input type="hidden" name="movieReq" value="The Martian" />
+                                <input type="image" name="displayMovie" src="./moviePoster/the Martian.png" value="Submit" />
                             </form>
                         </div>
                         <div class="author">
@@ -70,10 +67,9 @@
                     </div>
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="controller.php" method="post" >
-                                <input type="hidden" name="movieReq" value="Mortal Kombat">
-                                    <a rel="url" href="controller.php"><img src="moviePoster/tmnt2.png"></a>
-                                </input>
+                            <form action="redirect.php" method="post" >
+                                <input type="hidden" name="movieReq" value="TMNT2" />
+                                <input type="image" name="displayMovie" src="./moviePoster/tmnt2.png" value="Submit" />
                             </form>
                         </div>
                         <div class="author">

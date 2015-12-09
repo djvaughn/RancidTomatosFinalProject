@@ -88,7 +88,8 @@
                      <input type="submit" id="movieSearch" name="movieSearch" value="Search">
                 </form>
                     <br />
-                    <div id="autoResultsBox" class="autoResultsBox" >
+                    <div id="autoResultsBox" >
+                        hey there
                     </div>
                 </div>
             </section>
@@ -105,10 +106,10 @@ function clearFunction() {
 function findMovies(){
     var str = document.getElementById("searchText").value;
     if(str.length == 0){
-        return;
+        
     }else{
-        document.getElementById("autoResultsBox").value = "hey";
-        document.getElementById("autoResultsBox").visibility = visible;
+        //document.getElementById("autoResultsBox").value = "hey";
+        document.getElementById("autoResultsBox").style.display = none;
     }
 }
 
@@ -118,7 +119,7 @@ function findMovies1(){
         return;
     }else{
         document.getElementById("autoResultsBox").value = "hey";
-        //document.getElementById("autoResultsBox").visibility = visible;
+        //document.getElementById("autoResultsBox").display = block;
     }
 
     var xhttp = new XMLHttpRequest();
