@@ -9,6 +9,7 @@
    Then the session checks for an error.
     */
             $duplicateMovie = false;
+            $noMovie = false;
             session_start();
             if (!isset($_SESSION['user'])) {
                 header("location: login.php");
@@ -16,6 +17,9 @@
             }
             if (isset($_SESSION['failureToAdd'])) {
                 $duplicateMovie = true;
+            }
+            if (isset($_SESSION['noMovie'])) {
+                $noMovie = true;
             }
 ?>
     <meta charset="utf-8" />
@@ -83,9 +87,21 @@
                 <a rel="url" href="">Logout</a>
                 <br /><br />
                 <div class="searchBoxDiv">
-                   <form id="searchForm" action="movie.php" method="post">
-                    <input type="search" id="searchText" name="searchText" oninput="findMovies()">
-                     <input type="submit" id="movieSearch" name="movieSearch" value="Search">
+                    <form action="redirect.php" method="get">
+                        <!-- <input type="hidden" name="mode" value="search" /> -->
+                        <input type="search" name ="movie" id="searchBox" />
+                        <!-- onchange="autocomplete()" -->
+                        <input type="submit" value="Search Movie" />
+                                    <?php
+                                if ($noMovie == TRUE) {
+                                ?>
+                                    <p>The movie doesn't exist</p>
+
+                                <?php
+                                $noMovie = False;
+                                unset($_SESSION['noMovie']);
+                                }
+                                ?>
                 </form>
                     <br />
                     <div id="autoResultsBox" >
@@ -106,7 +122,7 @@ function clearFunction() {
 function findMovies(){
     var str = document.getElementById("searchText").value;
     if(str.length == 0){
-        
+
     }else{
         //document.getElementById("autoResultsBox").value = "hey";
         document.getElementById("autoResultsBox").style.display = none;
@@ -146,7 +162,7 @@ function findMovies1(){
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("searchString="+str);
 
-    
+
 }
 function fill(str){
     document.getElementById("searchText").value = str;

@@ -9,13 +9,16 @@
 session_start();
  $loginProblem = False;
  $registerProblem = False;
-
+$noMovie = false;
 if (isset($_SESSION['loginProblem'])) {
     $loginProblem = True;
 }
 if (isset($_SESSION['registerProblem'])) {
     $registerProblem = True;
 }
+            if (isset($_SESSION['noMovie'])) {
+                $noMovie = true;
+            }
 
 //use this for the redirect and print error login messages
 
@@ -103,20 +106,33 @@ if (isset($_SESSION['registerProblem'])) {
 
 	    		<br /><br />
 	    		<div class="searchBoxDiv">
-                    <input type="hidden" name="mode" value="search" />
-                    <input type="text" value="" id="searchBox" onchange="autocomplete()" />
-                    <input type="submit" value="Search Movie" />
+             <form action="redirect.php" method="get">
+                        <!-- <input type="hidden" name="mode" value="search" /> -->
+                        <input type="search" name ="movie" id="searchBox" />
+                        <!-- onchange="autocomplete()" -->
+                        <input type="submit" value="Search Movie" />
+                                    <?php
+                                if ($noMovie == TRUE) {
+                                ?>
+                                    <p>The movie doesn't exist</p>
+
+                                <?php
+                                $noMovie = False;
+                                unset($_SESSION['noMovie']);
+                                }
+                                ?>
+                </form>
                     <br />
                     <div id="autoResultsBox" class="autoResultsBox" >
                         <!--<textarea rows="4" cols="20">
                             <ul>
                                 <?= $myStmt = ""; ?>
-                                <?php foreach($search as $match) { ?> 
+                                <?php foreach($search as $match) { ?>
                                     <?= $myStmt = $match['title'] . ', ' . $match['year'] ?>
-                                        <li> 
+                                        <li>
                                             <div id="filler" onclick="fill()">
                                                 <?= $myStmt ?>
-                                            </div> 
+                                            </div>
                                         </li>
                                 <?php } ?>
                             </ul>

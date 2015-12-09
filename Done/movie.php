@@ -45,9 +45,10 @@ require_once("./model.php");
         <div class="row main-header">
             <!-- The php code prints the movie title and year it was made -->
             <h1><?=$film?> (<?=$year?>)</h1>
-        
+
         <div class="linkBox">
             <form id="searchForm" action="redirect.php" method="get">
+               <a rel="url" href="index.php">Home</a>
                 <?php if(!isset($_SESSION['user'])) { ?>
                     <a rel="url" href="login.php">Login/Register</a>
                 <?php }else { ?>
@@ -55,16 +56,16 @@ require_once("./model.php");
                     <a rel="url" href="addMovie.php">Add a Movie</a>
                     <a rel="url" href="logout.php">Logout</a>
                 <?php } ?>
-        
+
                     <input type="search" id="searchText" name ="movie" id="searchBox">
                     <input type="submit" "Search Movie">
                     <div class="searchBoxDiv" action="redirect.php">
                     <div id="autoResultsBox" class="autoResultsBox" >
-                        
+
                     </div>
                 </div>
             </form>
-            
+
         </div>
         <div class="main row">
             <section class="reviews-container">

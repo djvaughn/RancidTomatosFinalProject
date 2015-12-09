@@ -72,9 +72,21 @@
                 <a rel="url" href="">Logout</a>
                 <br /><br />
                 <div class="searchBoxDiv">
-                   <form id="searchForm" action="movie.php" method="post">
-                    <input type="search" id="searchText" name="searchText" oninput="findMovies()">
-                     <input type="submit" id="movieSearch" name="movieSearch" value="Search">
+                    <form action="redirect.php" method="get">
+                        <!-- <input type="hidden" name="mode" value="search" /> -->
+                        <input type="search" name ="movie" id="searchBox" />
+                        <!-- onchange="autocomplete()" -->
+                        <input type="submit" value="Search Movie" />
+                                    <?php
+                                if ($noMovie == TRUE) {
+                                ?>
+                                    <p>The movie doesn't exist</p>
+
+                                <?php
+                                $noMovie = False;
+                                unset($_SESSION['noMovie']);
+                                }
+                                ?>
                 </form>
                     <br />
                     <div id="autoResultsBox" class="autoResultsBox" >

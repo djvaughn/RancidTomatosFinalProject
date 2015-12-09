@@ -4,10 +4,17 @@
 	<title>RT: Home</title>
 	<meta charset="utf-8" />
 	<link href="movie.css" type="text.css" rel="stylesheet" />
-    <?php
-        session_start();
-        $search = "";
-    ?>
+            <?php
+                /*
+   Uses a session to check if the user has logged in .  If they haven't, then they will be redirected to the login page
+   Then the session checks for an error.
+    */
+            $noMovie = false;
+            session_start();
+            if (isset($_SESSION['noMovie'])) {
+                $noMovie = true;
+            }
+?>
 </header>
 
 <body>
@@ -68,7 +75,7 @@
                 	<div class="review-wrapper">
                         <div class="review">
                             <form action="redirect.php" method="get" >
-                                <input type="hidden" name="movie" value="TMNT2" />
+                                <input type="hidden" name="movie" value="Teenage Mutant Ninja Turtles II: The Secret of the Ooze" />
                                 <input type="image" name="displayMovie" src="./moviePoster/tmnt2.png" value="Submit" />
                             </form>
                         </div>
@@ -90,20 +97,30 @@
                     <br />
                     <a rel="url" href="addReview.php" >Review a Movie</a>
                     <br />
-                    <a rel="url" href="">Logout</a>
+                    <a rel="url" href="logout.php">Logout</a>
                 <?php } ?>
 
                 <br /><br />
-                <div class="searchBoxDiv" action="redirect.php">
+                <div class="searchBoxDiv" action="controller.php">
                     <form action="redirect.php" method="get">
                         <!-- <input type="hidden" name="mode" value="search" /> -->
                         <input type="search" name ="movie" id="searchBox" />
                         <!-- onchange="autocomplete()" -->
                         <input type="submit" value="Search Movie" />
+                                    <?php
+                                if ($noMovie == TRUE) {
+                                ?>
+                                    <p>The movie doesn't exist</p>
+
+                                <?php
+                                $noMovie = False;
+                                unset($_SESSION['noMovie']);
+                                }
+                                ?>
                     </form>
                     <br />
                     <div id="autoResultsBox" class="autoResultsBox" >
-                        
+
                     </div>
                 </div>
             </section>
