@@ -97,7 +97,7 @@
                 <div class="searchBoxDiv" action="redirect.php">
                     <form action="redirect.php" method="get">
                         <!-- <input type="hidden" name="mode" value="search" /> -->
-                        <input type="text" name ="movie" id="searchBox" />
+                        <input type="search" name ="movie" id="searchBox" />
                         <!-- onchange="autocomplete()" -->
                         <input type="submit" value="Search Movie" />
                     </form>
