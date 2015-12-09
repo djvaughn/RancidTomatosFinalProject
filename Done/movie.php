@@ -46,6 +46,15 @@ require_once("./model.php");
             <!-- The php code prints the movie title and year it was made -->
             <h1><?=$film?> (<?=$year?>)</h1>
         </div>
+        <div class="linkBox">
+        </div>
+            <?php if(!isset($_SESSION['user'])) { ?>
+                <a rel="url" href="login.php">Login/Register</a>
+            <?php }else { ?>
+                <a rel="url" href="addReview.php">Add a Review</a>
+                <a rel="url" href="addMovie.php">Add a Movie</a>
+                <a rel="url" href="">Logout</a>
+            <?php } ?>
         <div class="main row">
             <section class="reviews-container">
                 <aside class="ratings-container">

@@ -180,4 +180,7 @@ footer p {
 	min-height: 2em;
 	padding: 3.5%;
 }
+.autoResultsBox{
+	/*visibility: hidden;*/
+}
 

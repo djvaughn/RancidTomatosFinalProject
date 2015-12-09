@@ -178,5 +178,14 @@ class Model
         $stmh->bindParam(':rating', $rounded);
         $stmh->execute();
     }
+
+    public function matchString($str){
+        $newStr = $str . '%';
+        $sql = "SELECT CONCAT (title, ' (', year, ')') AS match FROM movies WHERE title LIKE :newStr ORDER BY title";
+        $stmt = $this->DB->prepare ($sql);
+        $stmt->bindParam(':newStr', $newStr);
+        $stmt->execute();
+        return $stmt->fetchAll ( PDO::FETCH_ASSOC );
+    }
 }
 ?>

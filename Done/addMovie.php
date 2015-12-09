@@ -102,6 +102,55 @@
 function clearFunction() {
     document.getElementById("addMovie").reset();
 }
+function findMovies(){
+    var str = document.getElementById("searchText").value;
+    if(str.length == 0){
+        return;
+    }else{
+        document.getElementById("autoResultsBox").value = "hey";
+        document.getElementById("autoResultsBox").visibility = visible;
+    }
+}
+
+function findMovies1(){
+    var str = document.getElementById("searchText").value;
+    if(str.length == 0){
+        return;
+    }else{
+        document.getElementById("autoResultsBox").value = "hey";
+        //document.getElementById("autoResultsBox").visibility = visible;
+    }
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function(){
+        if(xhttp.readyState == 4 && xhttp.status == 200){
+            var autoArray = JSON.parse(xhttp.responseText);
+            var toReturn = ""
+            var N = autoArray.length;
+            var i=0;
+            if(N > 0){
+                toReturn = "<ul>"
+                for(i=0; i<N; i++){
+                    toReturn += '<li id="searchMatches" onclick="fill(' + autoArray[i]['match'] + ')">' + autoArray[i]['match'] + '</li><br />';
+                }
+                toReturn += "</ul>"
+            }
+            document.getElementById("autoResultsBox").innerHTML = $toReturn;
+            //document.getElementById("autoResultsBox").visibility = visible;
+        }
+    }
+
+    xhttp.open("POST","controller.php",true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("searchString="+str);
+
+    
+}
+function fill(str){
+    document.getElementById("searchText").value = str;
+   // document.getElementById("autoResultsBox").visibility = hidden;
+}
 </script>
 </body>
 
