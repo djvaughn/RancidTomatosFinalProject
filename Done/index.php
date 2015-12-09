@@ -29,8 +29,8 @@
                 <div class="row">
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="redirect.php" method="post" >
-                                <input type="hidden" name="movieReq" value="MortalKombat" />
+                            <form action="redirect.php" method="get" >
+                                <input type="hidden" name="movie" value="Mortal Kombat" />
                                 <input type="image" name="displayMovie" src="./moviePoster/mortalKombat.png" value="Submit" />
                             </form>
                         </div>
@@ -41,8 +41,8 @@
                 	</div>
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="redirect.php" method="post" >
-                                <input type="hidden" name="movieReq" value="The Princess Bride" />
+                            <form action="redirect.php" method="get" >
+                                <input type="hidden" name="movie" value="The Princess Bride" />
                                 <input type="image" name="displayMovie" src="./moviePoster/princessBride.png" value="Submit" />
                             </form>
                         </div>
@@ -55,8 +55,8 @@
                 <div class="row">
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="redirect.php" method="post" >
-                                <input type="hidden" name="movieReq" value="The Martian" />
+                            <form action="redirect.php" method="get" >
+                                <input type="hidden" name="movie" value="The Martian" />
                                 <input type="image" name="displayMovie" src="./moviePoster/the Martian.png" value="Submit" />
                             </form>
                         </div>
@@ -67,8 +67,8 @@
                     </div>
                 	<div class="review-wrapper">
                         <div class="review">
-                            <form action="redirect.php" method="post" >
-                                <input type="hidden" name="movieReq" value="TMNT2" />
+                            <form action="redirect.php" method="get" >
+                                <input type="hidden" name="movie" value="TMNT2" />
                                 <input type="image" name="displayMovie" src="./moviePoster/tmnt2.png" value="Submit" />
                             </form>
                         </div>
@@ -94,10 +94,11 @@
                 <?php } ?>
 
                 <br /><br />
-                <div class="searchBoxDiv" action="controller.php">
-                    <form>
-                        <input type="hidden" name="mode" value="search" />
-                        <input type="text" value="" id="searchBox" onchange="autocomplete()" />
+                <div class="searchBoxDiv" action="redirect.php">
+                    <form action="redirect.php" method="get">
+                        <!-- <input type="hidden" name="mode" value="search" /> -->
+                        <input type="text" name ="movie" id="searchBox" />
+                        <!-- onchange="autocomplete()" -->
                         <input type="submit" value="Search Movie" />
                     </form>
                     <br />

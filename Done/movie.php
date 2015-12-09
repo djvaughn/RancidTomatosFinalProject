@@ -47,14 +47,19 @@ require_once("./model.php");
             <h1><?=$film?> (<?=$year?>)</h1>
         </div>
         <div class="linkBox">
-        </div>
             <?php if(!isset($_SESSION['user'])) { ?>
                 <a rel="url" href="login.php">Login/Register</a>
             <?php }else { ?>
                 <a rel="url" href="addReview.php">Add a Review</a>
                 <a rel="url" href="addMovie.php">Add a Movie</a>
-                <a rel="url" href="">Logout</a>
+                
+                <a rel="url" href="logout.php">Logout</a>
             <?php } ?>
+        </div>
+        <form id="searchForm" action="movie.php" method="post">
+                    <input type="search" id="searchText" name="searchText" oninput="findMovies()">
+                    <input type="submit" id="movieSearch" name="movieSearch" value="Search">
+                </form>
         <div class="main row">
             <section class="reviews-container">
                 <aside class="ratings-container">
