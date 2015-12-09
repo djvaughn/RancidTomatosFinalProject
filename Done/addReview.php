@@ -5,11 +5,14 @@
     <title>RT: Add a Review</title>
             <?php
 
-
+            $noMovie = false;
             session_start();
             if (!isset($_SESSION['user'])) {
                 header("location: login.php");
                 exit;
+            }
+              if (isset($_SESSION['noMovie'])) {
+                $noMovie = true;
             }
 
 ?>
@@ -48,6 +51,16 @@
                         Review: <br> <textarea rows="10" cols="50" name="reviewReview" required maxlength=500></textarea><br><br>
                         <input type="submit" value="Add Review" >
                         <input type="button" value="Clear Form" onclick="clearFunction()">
+                                <?php
+                                if ($noMovie == TRUE) {
+                                ?>
+                                    <p>The movie does not exist</p>
+
+                                <?php
+                                $noMovie = False;
+                                unset($_SESSION['noMovie']);
+                                }
+                                ?>
                     </form>
                 </div>
             </section>
@@ -58,38 +71,13 @@
                 <br />
                 <a rel="url" href="">Logout</a>
                 <br /><br />
-                <!--
-                <a rel="url" href="index.php">Home</a>
-                <br />
-                <?php if(!isset($_SESSION['user'])){ ?>
-                    <a rel="url" href="login.php" >Login</a>
-                    <br />
-                <?php }else { ?>
-                    <a rel="url" href="addMovie.php" >Add a Movie</a>
-                    <br />
-                    <a rel="url" href="">Logout</a>
-                <?php } ?>
-
-                <br /><br /> -->
                 <div class="searchBoxDiv">
-                    <input type="hidden" name="mode" value="search" />
-                    <input type="text" value="" id="searchBox" onchange="autocomplete()" />
-                    <input type="submit" value="Search Movie" />
+                   <form id="searchForm" action="movie.php" method="post">
+                    <input type="search" id="searchText" name="searchText" oninput="findMovies()">
+                     <input type="submit" id="movieSearch" name="movieSearch" value="Search">
+                </form>
                     <br />
                     <div id="autoResultsBox" class="autoResultsBox" >
-                        <!--<textarea rows="4" cols="20">
-                            <ul>
-                                <?= $myStmt = ""; ?>
-                                <?php foreach($search as $match) { ?> 
-                                    <?= $myStmt = $match['title'] . ', ' . $match['year'] ?>
-                                        <li> 
-                                            <div id="filler" onclick="fill()">
-                                                <?= $myStmt ?>
-                                            </div> 
-                                        </li>
-                                <?php } ?>
-                            </ul>
-                        </textarea> -->
                     </div>
                 </div>
             </section>

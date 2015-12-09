@@ -131,7 +131,7 @@ require_once("./model.php");
                     <dt>RUNTIME</dt>
                     <dd><?= $runtime ?> minutes</dd>
                     <dt>BOX OFFICE</dt>
-                    <dd>$<?= $boxOffice ?></dd>
+                    <dd>$<?= $boxOffice ?> millions</dd>
                 </dl>
             </section>
             <footer class="row">

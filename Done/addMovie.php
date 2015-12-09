@@ -4,6 +4,10 @@
 <head>
     <title>RT: Add a Movie</title>
             <?php
+                /*
+   Uses a session to check if the user has logged in .  If they haven't, then they will be redirected to the login page
+   Then the session checks for an error.
+    */
             $duplicateMovie = false;
             session_start();
             if (!isset($_SESSION['user'])) {
@@ -79,24 +83,12 @@
                 <a rel="url" href="">Logout</a>
                 <br /><br />
                 <div class="searchBoxDiv">
-                    <input type="hidden" name="mode" value="search" />
-                    <input type="text" value="" id="searchBox" onchange="autocomplete()" />
-                    <input type="submit" value="Search Movie" />
+                   <form id="searchForm" action="movie.php" method="post">
+                    <input type="search" id="searchText" name="searchText" oninput="findMovies()">
+                     <input type="submit" id="movieSearch" name="movieSearch" value="Search">
+                </form>
                     <br />
                     <div id="autoResultsBox" class="autoResultsBox" >
-                        <!--<textarea rows="4" cols="20">
-                            <ul>
-                                <?= $myStmt = ""; ?>
-                                <?php foreach($search as $match) { ?> 
-                                    <?= $myStmt = $match['title'] . ', ' . $match['year'] ?>
-                                        <li> 
-                                            <div id="filler" onclick="fill()">
-                                                <?= $myStmt ?>
-                                            </div> 
-                                        </li>
-                                <?php } ?>
-                            </ul>
-                        </textarea> -->
                     </div>
                 </div>
             </section>
